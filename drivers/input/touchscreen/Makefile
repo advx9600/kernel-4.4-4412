@@ -65,5 +65,5 @@ obj-$(CONFIG_TOUCHSCREEN_WM97XX_ZYLONITE)	+= zylonite-wm97xx.o
 obj-$(CONFIG_TOUCHSCREEN_W90X900)	+= w90p910_ts.o
 obj-$(CONFIG_TOUCHSCREEN_TPS6507X)	+= tps6507x-ts.o
 obj-$(CONFIG_TOUCHSCREEN_RPDZKJ_ILITEK)	+= ilitek_aimvF.o
-obj-$(CONFIG_TOUCHSCREEN_FT5X0X)	+=  ft5x0x_ts_2.o #ft5x0x_ts.o
+obj-$(CONFIG_TOUCHSCREEN_FT5X0X)	+=  ft5x0x_ts.o #ft5x0x_ts_2.o
 obj-$(CONFIG_TOUCHSCREEN_ZET6221) += zet6221_i2c.o
