@@ -1,0 +1,36 @@
+menu "rongpin customized drivers"
+
+	  
+choice
+prompt "rpdzkj project select"
+default BOARD
+
+
+config BOARD
+	bool "BOARD"
+	---help---
+	  select BOARD
+
+
+config RP119
+	bool "RP119"
+	---help---
+	  select rp119
+	  	  
+config RP7
+	bool "RP7"
+	---help---
+	  select rp7
+
+
+
+endchoice	
+
+config RPDZKJ_SYSFS
+	tristate "rpdzkj sysfs  support"
+	default y
+	help
+	  Generic rpdzkj power off .
+  
+
+endmenu

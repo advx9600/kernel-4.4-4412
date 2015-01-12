@@ -1,0 +1,15 @@
+
+menuconfig RP_BUTTON
+	bool "rongpin button"
+	help
+	  Say Y here, and a list of supported button will be displayed.
+	  This option doesn't affect the kernel.
+		If unsure, say Y.
+
+if RP_BUTTON
+config RONGPIN_BUTTON
+	tristate "rongpin button"
+	default y
+	---help---
+	  Say Y here if you want to support rongpin button.
+endif

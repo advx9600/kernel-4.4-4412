@@ -1,0 +1,19 @@
+menuconfig SWITCH
+	tristate "Switch class support"
+	help
+	  Say Y here to enable switch class support. This allows
+	  monitoring switches by userspace via sysfs and uevent.
+
+if SWITCH
+
+config SWITCH_GPIO
+	tristate "GPIO Swith support"
+	depends on GENERIC_GPIO
+	help
+	  Say Y here to enable GPIO based switch support.
+
+config SWITCH_4212_HEADSET
+	bool "4212 Headset Detect"
+	depends on SWITCH_GPIO 
+
+endif # SWITCH

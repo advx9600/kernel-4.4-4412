@@ -1,0 +1,142 @@
+/* linux/arch/arm/mach-s5pv310/setup-fimc0.c
+ *
+ * Copyright (c) 2010 Samsung Electronics Co., Ltd.
+ *		http://www.samsung.com/
+ *
+ * Base FIMC 0 gpio configuration
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+*/
+
+#include <linux/kernel.h>
+#include <linux/types.h>
+#include <linux/gpio.h>
+#include <linux/clk.h>
+#include <linux/err.h>
+#include <linux/platform_device.h>
+#include <linux/io.h>
+#include <plat/clock.h>
+#include <plat/gpio-cfg.h>
+#include <mach/regs-gpio.h>
+#include <plat/map-s5p.h>
+#include <plat/cpu.h>
+#include <mach/map.h>
+
+struct platform_device; /* don't need the contents */
+
+void s3c_fimc0_cfg_gpio(struct platform_device *pdev)
+{
+
+	s5p_gpio_drvstr_t drv_tmp = S5P_GPIO_DRVSTR_LV1;
+	printk("###s3c_fimc0_cfg_gpio\n");
+	{
+#if 1//cam A	
+		/* CAM A port(b0010) : PCLK, VSYNC, HREF, DATA[0-4] */
+		s3c_gpio_cfgrange_nopull(EXYNOS4212_GPJ0(0), 8, S3C_GPIO_SFN(2));
+		/* CAM A port(b0010) : DATA[5-7], CLKOUT(MIPI CAM also), FIELD */
+		s3c_gpio_cfgrange_nopull(EXYNOS4212_GPJ1(0), 5, S3C_GPIO_SFN(2));
+#endif
+
+#if 1	
+		/* CAM B port(b0011) : PCLK, DATA[0-6] */
+		s3c_gpio_cfgrange_nopull(EXYNOS4212_GPM0(0), 8, S3C_GPIO_SFN(3));
+		/* CAM B port(b0011) : FIELD, DATA[7]*/
+		s3c_gpio_cfgrange_nopull(EXYNOS4212_GPM1(0), 2, S3C_GPIO_SFN(3));
+		/* CAM B port(b0011) : VSYNC, HREF, CLKOUT*/
+		s3c_gpio_cfgrange_nopull(EXYNOS4212_GPM2(0), 3, S3C_GPIO_SFN(3));
+
+#if 1		
+//		s5p_gpio_set_drvstr(EXYNOS4212_GPM0(0), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4212_GPM0(1), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4212_GPM0(2), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4212_GPM0(3), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4212_GPM0(4), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4212_GPM0(5), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4212_GPM0(6), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4212_GPM0(7), drv_tmp);
+		
+//		s5p_gpio_set_drvstr(EXYNOS4212_GPM1(0), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4212_GPM1(1), drv_tmp);
+		
+//		s5p_gpio_set_drvstr(EXYNOS4212_GPM2(0), drv_tmp);		
+//		s5p_gpio_set_drvstr(EXYNOS4212_GPM2(1), drv_tmp);
+//		s5p_gpio_set_drvstr(EXYNOS4212_GPM2(2), drv_tmp);
+
+/*
+		gpio_direction_output(EXYNOS4212_GPM0(1), 0);
+		gpio_direction_output(EXYNOS4212_GPM0(2), 0);
+		gpio_direction_output(EXYNOS4212_GPM0(3), 0);
+		gpio_direction_output(EXYNOS4212_GPM0(4), 0);
+		gpio_direction_output(EXYNOS4212_GPM0(5), 0);
+		gpio_direction_output(EXYNOS4212_GPM0(6), 0);
+		gpio_direction_output(EXYNOS4212_GPM0(7), 0);		
+		gpio_direction_output(EXYNOS4212_GPM1(1), 0);
+*/		
+#endif
+	#else
+
+		s5p_gpio_set_drvstr(EXYNOS4210_GPJ0(0), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4210_GPJ0(1), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4210_GPJ0(2), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4210_GPJ0(3), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4210_GPJ0(4), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4210_GPJ0(5), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4210_GPJ0(6), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4210_GPJ0(7), drv_tmp);
+
+		s5p_gpio_set_drvstr(EXYNOS4210_GPJ1(0), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4210_GPJ1(1), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4210_GPJ1(2), drv_tmp);
+	
+		s5p_gpio_set_drvstr(EXYNOS4210_GPJ1(4), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4210_GPJ1(5), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4210_GPJ1(6), drv_tmp);
+		s5p_gpio_set_drvstr(EXYNOS4210_GPJ1(7), drv_tmp);
+		*/
+	#endif
+	printk("###s3c_fimc0_cfg_gpio end !!\n");
+		
+	}
+	/* note : driver strength to max is unnecessary */
+}
+
+int s3c_fimc_clk_on(struct platform_device *pdev, struct clk **clk)
+{
+	struct clk *sclk_fimc_lclk = NULL;
+
+	sclk_fimc_lclk = clk_get(&pdev->dev, "sclk_fimc");
+	if (IS_ERR(sclk_fimc_lclk)) {
+		dev_err(&pdev->dev, "failed to get sclk_fimc_lclk\n");
+		goto err_clk1;
+	}
+
+	/* be able to handle clock on/off only with this clock */
+	*clk = clk_get(&pdev->dev, "fimc");
+	if (IS_ERR(clk)) {
+		dev_err(&pdev->dev, "failed to get interface clock\n");
+		goto err_clk2;
+	}
+
+	clk_enable(*clk);
+	clk_enable(sclk_fimc_lclk);
+
+	return 0;
+
+err_clk2:
+	clk_put(sclk_fimc_lclk);
+err_clk1:
+	return -EINVAL;
+}
+
+int s3c_fimc_clk_off(struct platform_device *pdev, struct clk **clk)
+{
+	if (*clk != NULL) {
+		clk_disable(*clk);
+		clk_put(*clk);
+		*clk = NULL;
+	}
+
+	return 0;
+}

@@ -1,0 +1,14 @@
+rp_button.c已经集成proc节点，目前增加2 个GPIO的高低电平控制。
+节点：proc/rp_button/button_ctrl
+控制方式：上层应用对以上proc节点写一个对应的值，GPIO电平就有变化，板子上的LED灯就会改变状态。
+
+值与状态对应信息：
+0:eint11 0
+1:eint11 1
+2:eint18 0
+3:eint18 1
+
+如需要增加其他GPIO控制，只需要在button_proc_write函数里边增加不同的值与操作。
+
+
+QQ：2395978564

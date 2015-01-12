@@ -1,0 +1,10 @@
+#!/bin/sh
+
+rm obj_tmp -rf
+mkdir obj_tmp
+cd obj_tmp
+tar zxvf ../modules_obj.tgz
+find | xargs touch 
+cp * ../ -rf
+rm obj_tmp -rf
+
