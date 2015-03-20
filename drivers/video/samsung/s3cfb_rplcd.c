@@ -123,24 +123,24 @@ static struct s3cfb_lcd s_rplcd_param[] =
 	
 //		.width = 1024,//800,
 //		.height = 768,//480,
-		.width = 1024,//800,
-		.height = 600,//480, 
+		.width = 720,//800,
+		.height = 1280,//480, 
 //		.width = 1368,//800,
 //		.height = 768,//480,
 //		.width = 1280,//800,
 //		.height = 800,//480,
 		.bpp = 24/*24*/,
-		.freq	= 60,
+		.freq	= 50,
 
 		.timing = {
-			.h_fp = 200,
-			.h_bp = 180,		
-			.h_sw = 36,
+			.h_fp = 100,
+			.h_bp = 100,		
+			.h_sw = 8,
 			.v_fp = 16,
 			.v_fpe = 1,
-			.v_bp = 6,
+			.v_bp = 16,
 			.v_bpe = 1,
-			.v_sw = 3,
+			.v_sw = 8,
 		},
 
 		.polarity = {
