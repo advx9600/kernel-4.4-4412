@@ -11,6 +11,10 @@ menuconfig INPUT_TOUCHSCREEN
 
 if INPUT_TOUCHSCREEN
 
+config TOUCHSCREEN_GT9XX
+	tristate "GT9XX touchscreen driver"
+	default n
+
 config TOUCHSCREEN_CYPRESS_CYTTSP5
 	tristate "Cypress TrueTouch Gen5 Touchscreen Driver"
 	help

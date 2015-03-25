@@ -3205,6 +3205,9 @@ static struct i2c_board_info i2c_devs3[] __initdata = {
 #else
 	{	I2C_BOARD_INFO("ft5x0x_ts",0x38),   },
 #endif
+#ifdef CONFIG_TOUCHSCREEN_GT9XX
+	{	I2C_BOARD_INFO("Goodix-TS",0x5d),   },
+#endif
 };
 static struct i2c_board_info i2c_devs4[] __initdata = {
 	{
