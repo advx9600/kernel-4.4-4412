@@ -180,13 +180,19 @@ static void cyttsp5_report_event(struct cyttsp5_mt_data *md, int event,
 	int sig = MT_PARAM_SIGNAL(md, event);
 
 	if (sig != CY_IGNORE_VALUE){
-		#if 1
+	//	printk("event:%d,sig:%d,value:%d\n",event,sig,value);
+		if (sig == 53){
+			value=1279-value;
+		}
+		#if 0
 		if (sig == 53){
 			sig = 54;
 			value=value*720/1280;
+			value=720-value;
 		}else if (sig == 54){
 			sig = 53;
 			value=value*1280/720;
+			value=1280-value;
 		}
 		#endif
 		input_report_abs(md->input, sig, value);

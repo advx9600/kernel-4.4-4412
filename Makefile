@@ -1575,3 +1575,5 @@ FORCE:
 # information in a variable so we can use it in if_changed and friends.
 .PHONY: $(PHONY)
 
+cp:
+	cp arch/arm/boot/zImage /mnt/hgfs/Desktop/temp/img/
